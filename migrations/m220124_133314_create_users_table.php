@@ -1,6 +1,5 @@
 <?php
 
-use app\models\User;
 use yii\db\Migration;
 
 /**
@@ -13,12 +12,12 @@ class m220124_133314_create_users_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable(User::tableName(), [
+        $this->createTable('{{%users}}', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(255),
-            'email' => $this->string(255)->unique(),
-            'password' => $this->string(),
-            'created_at' => $this->timestamp(),
+            'name'=>$this->string(255),
+            'email'=>$this->string(255)->unique(),
+            'password'=>$this->string(),
+            'created_at'=>$this->timestamp(),
         ]);
     }
 
