@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+
 /* @var $posts yii\web\View */
 
 
@@ -35,10 +36,11 @@ $this->title = 'My Yii Application';
                             <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
                                  preserveAspectRatio="xMidYMid slice">
                                 <rect width="100%" height="100%" fill="#55595c"/>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em"><?= $post->title ?></text>
+                                <text x="50%" y="50%" fill="#eceeef"
+                                      dy=".3em"><?= $post->getShortText($post->title) ?></text>
                             </svg>
                             <div class="card-body">
-                                <p class="card-text"><?= $post->getShortDescription($post->description) ?></p>
+                                <p class="card-text"><?= $post->getShortText($post->description) ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a type="button" class="btn btn-sm btn-outline-secondary"

@@ -16,7 +16,7 @@ class Posts extends ActiveRecord
     }
 
 
-    public function getShortDescription($description)
+    public function getShortText($description)
     {
         if (strlen($description) > 35) {
             return substr($description, 0, 35) . '...';
