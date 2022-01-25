@@ -24,11 +24,11 @@ $this->title = 'My Yii Application';
 </style>
 <body>
 <main>
-    <div class="album py-5 bg-light">
+    <div class="album  ">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <? foreach ($posts as $post) : ?>
-                    <div class="col">
+                    <div class="col mt-4">
                         <div class="card shadow-sm">
                             <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
                                  preserveAspectRatio="xMidYMid slice">
@@ -51,9 +51,10 @@ $this->title = 'My Yii Application';
             </div>
         </div>
     </div>
-    <? echo LinkPager::widget([
-        'pagination' => $pages,
-    ]); ?>
+    <div class="mt-3 offset-5"> <? echo LinkPager::widget([
+            'pagination' => $pages,
+        ]); ?>
+    </div>
 </main>
 </body>
 
