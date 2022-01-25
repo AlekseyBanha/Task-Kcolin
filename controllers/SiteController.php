@@ -73,12 +73,12 @@ class SiteController extends Controller
         if (Yii::$app->request->isPost) {
             $model->attributes = Yii::$app->request->post('SignUp');
 
-            if ($model->validate()) {
+
                 $model->signup();
                 $identity = User::find()->where(['email' => Yii::$app->request->post()['SignUp']['email']])->one();
                 Yii::$app->user->login($identity);
                 return $this->redirect(['/post/index']);
-            }
+
         }
         return $this->render('register', ['model' => $model]);
     }
