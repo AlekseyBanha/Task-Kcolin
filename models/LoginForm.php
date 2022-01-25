@@ -40,7 +40,7 @@ class LoginForm extends Model
 
     public function getUser()
     {
-        return User::findOne(['name' => $this->username]);
+        return User::findOne(['name' => $this->name]);
     }
 
 
