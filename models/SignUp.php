@@ -18,13 +18,6 @@ class SignUp extends Model {
           ['password','string','min'=>3,'max'=>12],
         ];
     }
-    public function signup(){
-        $user = new User();
-        $user->name=$this->name;
-        $user->email=$this->email;
-        $user->setPassword($this->password);
-        $user->created_at=date("Y-m-d H:i:s");
-        $user->save();
-    }
+
 
 }

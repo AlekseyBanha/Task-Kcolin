@@ -74,7 +74,12 @@ class SiteController extends Controller
             $model->attributes = Yii::$app->request->post('SignUp');
 
 
-                $model->signup();
+                $user = new User();
+                $user->name=Yii::$app->request->post()['SignUp']['name'];
+                $user->email=Yii::$app->request->post()['SignUp']['email'];
+                $user->setPassword(Yii::$app->request->post()['SignUp']['password']);
+                $user->created_at=date("Y-m-d H:i:s");
+                $user->save();
                 $identity = User::find()->where(['email' => Yii::$app->request->post()['SignUp']['email']])->one();
                 Yii::$app->user->login($identity);
                 return $this->redirect(['/post/index']);
