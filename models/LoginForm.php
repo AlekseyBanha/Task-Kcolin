@@ -13,7 +13,7 @@ use yii\base\Model;
  */
 class LoginForm extends Model
 {
-    public $username;
+    public $name;
     public $password;
 
 
@@ -23,7 +23,7 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            [['username', 'password'], 'required'],
+            [['name', 'password'], 'required'],
             ['password', 'validatePassword'],
         ];
     }
