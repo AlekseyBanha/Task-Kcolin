@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-/* @var $posts yii\web\View */
+/* @var $posts yii\web\$array */
 
 
 use yii\bootstrap4\LinkPager;

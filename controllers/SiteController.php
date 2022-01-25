@@ -46,7 +46,6 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-
         $login_model = new LoginForm();
         if (Yii::$app->request->isPost) {
             $login_model->attributes = Yii::$app->request->post('LoginForm');
