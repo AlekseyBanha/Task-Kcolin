@@ -63,9 +63,9 @@ class PostController extends Controller
      */
     public function actionSingle()
     {
-        $posts = Posts::find()->where(['id' => Yii::$app->request->get()['id']])->one();
+        $post = Posts::find()->where(['id' => Yii::$app->request->get()['id']])->one();
 
-        return $this->render('single', ['posts' => $posts]);
+        return $this->render('single', ['post' => $post]);
     }
 
     /**
