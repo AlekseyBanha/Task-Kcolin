@@ -10,6 +10,7 @@ use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -31,7 +32,7 @@ AppAsset::register($this);
 
     NavBar::begin([
         'brandLabel' => 'Home Page',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandUrl' => Url::to(['/post/index']),
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
@@ -39,8 +40,8 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Add new Post', 'url' => ['/site/create'], 'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Home', 'url' => ['/post/index']],
+            ['label' => 'Add new Post', 'url' => ['/post/create'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Register', 'url' => ['/site/register'], 'visible' => Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
             ['label' => 'Login', 'url' => ['/site/login']]

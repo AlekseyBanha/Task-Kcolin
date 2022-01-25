@@ -4,7 +4,9 @@ namespace app\controllers;
 
 use app\models\Posts;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -19,10 +21,10 @@ class PostController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['create'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['create'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -38,19 +40,20 @@ class PostController extends Controller
     }
 
     /**
-     * {@inheritdoc}
+     * Displays homepage.
+     *
+     * @return string
      */
-    public function actions()
+    public function actionIndex()
     {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
+        $posts = Posts::find();
+        $countPosts = clone $posts;
+        $pages = new Pagination(['totalCount' => $countPosts->count(), 'pageSize' => 6]);
+        $models = $posts->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('index', ['posts' => $models, 'pages' => $pages]);
     }
 
     /**
@@ -58,15 +61,32 @@ class PostController extends Controller
      *
      * @return string
      */
-//    public function actionIndex()
-//    {
-//        return $this->render('index');
-//    }
-
-    public function actionPosts()
+    public function actionSingle()
     {
-        $posts = Posts::find()->all();
-        return $this->render('index', ['posts' => $posts]);
+        $posts = Posts::find()->where(['id' => Yii::$app->request->get()['id']])->one();
+
+        return $this->render('single', ['posts' => $posts]);
     }
+
+    /**
+     * @return string|Response
+     */
+    public function actionCreate()
+    {
+        $model = new Posts;
+        $fromData = Yii::$app->request->post();
+
+        if (Yii::$app->request->isPost && $model->load($fromData) && $model->validate()) {
+            $post = new Posts;
+            $post->title = Yii::$app->request->post()['Posts']['title'];
+            $post->description = Yii::$app->request->post()['Posts']['description'];
+            $post->created_at = date("Y-m-d H:i:s");
+            $post->save();
+
+            return $this->redirect(Url::to(['/post/index']));
+        }
+        return $this->render('create', ['model' => $model]);
+    }
+
 
 }

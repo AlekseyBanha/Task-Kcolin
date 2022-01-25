@@ -1,6 +1,8 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $posts yii\web\View */
+
 
 use yii\bootstrap4\LinkPager;
 use yii\helpers\Url;
@@ -40,7 +42,7 @@ $this->title = 'My Yii Application';
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a type="button" class="btn btn-sm btn-outline-secondary"
-                                           href="<?= Url::to(['/site/single', 'id' => $post->id]) ?>">View</a>
+                                           href="<?= Url::to(['/post/single', 'id' => $post->id]) ?>">View</a>
                                     </div>
                                     <small class="text-muted"><?= $post->created_at ?></small>
                                 </div>
