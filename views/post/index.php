@@ -8,7 +8,7 @@
 use yii\bootstrap4\LinkPager;
 use yii\helpers\Url;
 
-$this->title = 'My Yii Application';
+$this->title = 'Posts';
 ?>
 <style>
     .bd-placeholder-img {
