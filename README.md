@@ -8,8 +8,8 @@
  composer install
 ```
 3) Fill in the connection configuration DB in file db.php
-```
-4) Execute
 
+4) Execute
+```
  php artisan migrate
 ```
