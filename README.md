@@ -11,5 +11,5 @@
 
 4) Execute
 ```
- php artisan migrate
+ php yii migrate
 ```
