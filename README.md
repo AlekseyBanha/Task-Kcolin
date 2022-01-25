@@ -9,7 +9,7 @@
 ```
 3) Fill in the connection configuration DB in file db.php
 ```
-4) 
+4) Execute
 ```shell   
  php artisan migrate
 ```
