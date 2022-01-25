@@ -46,6 +46,7 @@ $this->title = 'Posts';
                                         <a type="button" class="btn btn-sm btn-outline-secondary"
                                            href="<?= Url::to(['/post/single', 'id' => $post->id]) ?>">View</a>
                                     </div>
+                                    <small class="text-muted">Author: <strong><?= $post->nickname ?></strong></small>
                                     <small class="text-muted"><?= $post->created_at ?></small>
                                 </div>
                             </div>

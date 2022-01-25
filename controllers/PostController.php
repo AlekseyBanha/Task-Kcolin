@@ -80,6 +80,7 @@ class PostController extends Controller
             $post = new Posts;
             $post->title = Yii::$app->request->post()['Posts']['title'];
             $post->description = Yii::$app->request->post()['Posts']['description'];
+            $post->nickname = Yii::$app->user->identity->name;
             $post->created_at = date("Y-m-d H:i:s");
             $post->save();
 
